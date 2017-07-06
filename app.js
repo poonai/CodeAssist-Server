@@ -15,6 +15,7 @@ app.get("/stackoverflow", (req, res, next) => {
         if (html == "") {
           res.send("false")
         } else {
+          console.log(html);
           html.replace("<pre>", `<pre class="prettyprint">`, -1)
           let question = $("#question-header > h1 > a").text()
           html = `<a href="` + q + `"><h3>` + question + "</h3></a>" + html
@@ -26,4 +27,4 @@ app.get("/stackoverflow", (req, res, next) => {
 
 })
 
-app.listen(80)
+app.listen(process.env.PORT || 80)
